@@ -90,35 +90,40 @@
               "DeriveFieldsFormat": "",
               "Components": [],
               "SetValues": []
+            },
+            {
+              "FieldId": "Flexi.Invoice.InvoiceTable.LineNumber",
+              "FieldName": "Line Number",
+              "IsMultiValue": false,
+              "Type": "Number",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": []
+            },
+            {
+              "FieldId": "Flexi.Invoice.InvoiceTable.ItemPONumber",
+              "FieldName": "Item PO Number",
+              "IsMultiValue": false,
+              "Type": "Text",
+              "DeriveFieldsFormat": "",
+              "Components": [],
+              "SetValues": []
             }
           ],
           "SetValues": []
-        }
-      ]
-    },
-    {
-      "DocumentTypeId": "CustomGroup.CustomCategory.FinancialReport",
-      "Group": "Accounting",
-      "Category": "Incoming",
-      "Name": "Financial Report",
-      "OptionalUniqueIdentifier": "",
-      "TypeField": {
-        "FieldId": "CustomGroup.CustomCategory.FinancialReport.DocumentType",
-        "FieldName": "Document Type"
-      },
-      "Fields": [
+        },
         {
-          "FieldId": "CustomGroup.CustomCategory.FinancialReport.Year",
-          "FieldName": "Period Ended Date",
+          "FieldId": "Flexi.Invoice.VendorAddress",
+          "FieldName": "Vendor Address",
           "IsMultiValue": false,
-          "Type": "Date",
+          "Type": "Address",
           "DeriveFieldsFormat": "",
           "Components": [],
           "SetValues": []
         },
         {
-          "FieldId": "CustomGroup.CustomCategory.FinancialReport.CommissionFileNumber",
-          "FieldName": "Commission File Number",
+          "FieldId": "Flexi.Invoice.BillingName",
+          "FieldName": "Billing Name",
           "IsMultiValue": false,
           "Type": "Text",
           "DeriveFieldsFormat": "",
@@ -126,8 +131,26 @@
           "SetValues": []
         },
         {
-          "FieldId": "CustomGroup.CustomCategory.FinancialReport.FormType",
-          "FieldName": "Form Type",
+          "FieldId": "Flexi.Invoice.BillingAddress",
+          "FieldName": "Billing Address",
+          "IsMultiValue": false,
+          "Type": "Address",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": []
+        },
+        {
+          "FieldId": "Flexi.Invoice.ShippingAddress",
+          "FieldName": "Shipping Address",
+          "IsMultiValue": false,
+          "Type": "Address",
+          "DeriveFieldsFormat": "",
+          "Components": [],
+          "SetValues": []
+        },
+        {
+          "FieldId": "Flexi.Invoice.PaymentTerms",
+          "FieldName": "Payment Terms",
           "IsMultiValue": false,
           "Type": "Text",
           "DeriveFieldsFormat": "",
@@ -135,30 +158,17 @@
           "SetValues": []
         },
         {
-          "FieldId": "CustomGroup.CustomCategory.FinancialReport.MyNewField",
-          "FieldName": "My New Field",
+          "FieldId": "Flexi.Invoice.DueDate",
+          "FieldName": "Due Date",
           "IsMultiValue": false,
           "Type": "Date",
           "DeriveFieldsFormat": "",
           "Components": [],
           "SetValues": []
-        }
-      ]
-    },
-    {
-      "DocumentTypeId": "Accounting.Incoming.Receipt",
-      "Group": "Accounting",
-      "Category": "Incoming",
-      "Name": "Receipt",
-      "OptionalUniqueIdentifier": null,
-      "TypeField": {
-        "FieldId": "Accounting.Incoming.Receipt.DocumentType",
-        "FieldName": "Document Type"
-      },
-      "Fields": [
+        },
         {
-          "FieldId": "Accounting.Incoming.Receipt.Issuer",
-          "FieldName": "Issuer",
+          "FieldId": "Flexi.Invoice.PurchaseOrderNumber",
+          "FieldName": "Purchase Order Number",
           "IsMultiValue": false,
           "Type": "Text",
           "DeriveFieldsFormat": "",
@@ -166,17 +176,8 @@
           "SetValues": []
         },
         {
-          "FieldId": "Accounting.Incoming.Receipt.Date",
-          "FieldName": "Date",
-          "IsMultiValue": false,
-          "Type": "Date",
-          "DeriveFieldsFormat": "",
-          "Components": [],
-          "SetValues": []
-        },
-        {
-          "FieldId": "Accounting.Incoming.Receipt.TotalAmount",
-          "FieldName": "Total Amount",
+          "FieldId": "Flexi.Invoice.NetAmount",
+          "FieldName": "Net Amount",
           "IsMultiValue": false,
           "Type": "Number",
           "DeriveFieldsFormat": "",
@@ -184,49 +185,21 @@
           "SetValues": []
         },
         {
-          "FieldId": "Accounting.Incoming.Receipt.Items",
-          "FieldName": "Items",
+          "FieldId": "Flexi.Invoice.Tax",
+          "FieldName": "Tax",
           "IsMultiValue": false,
-          "Type": "Table",
+          "Type": "Text",
           "DeriveFieldsFormat": "",
-          "Components": [
-            {
-              "FieldId": "Accounting.Incoming.Receipt.Items.Name",
-              "FieldName": "Name",
-              "IsMultiValue": false,
-              "Type": "Text",
-              "DeriveFieldsFormat": "",
-              "Components": [],
-              "SetValues": []
-            },
-            {
-              "FieldId": "Accounting.Incoming.Receipt.Items.Quantity",
-              "FieldName": "Quantity",
-              "IsMultiValue": false,
-              "Type": "Text",
-              "DeriveFieldsFormat": "",
-              "Components": [],
-              "SetValues": []
-            },
-            {
-              "FieldId": "Accounting.Incoming.Receipt.Items.UnitPrice",
-              "FieldName": "Unit Price",
-              "IsMultiValue": false,
-              "Type": "Text",
-              "DeriveFieldsFormat": "",
-              "Components": [],
-              "SetValues": []
-            },
-            {
-              "FieldId": "Accounting.Incoming.Receipt.Items.Total",
-              "FieldName": "Total",
-              "IsMultiValue": false,
-              "Type": "Text",
-              "DeriveFieldsFormat": "",
-              "Components": [],
-              "SetValues": []
-            }
-          ],
+          "Components": [],
+          "SetValues": []
+        },
+        {
+          "FieldId": "Flexi.Invoice.currency",
+          "FieldName": "currency",
+          "IsMultiValue": false,
+          "Type": "Text",
+          "DeriveFieldsFormat": "",
+          "Components": [],
           "SetValues": []
         }
       ]
