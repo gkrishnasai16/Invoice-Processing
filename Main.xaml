@@ -78,11 +78,11 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
         <av:Size x:Key="ShapeSize">60,75</av:Size>
-        <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 300.2,107.7 300.2,140</av:PointCollection>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,140</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID2</x:Reference>
+      <x:Reference>__ReferenceID3</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
@@ -105,9 +105,10 @@
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">199.895,353</av:Point>
               <av:Size x:Key="ShapeSize">200,51</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">299.895,404 299.895,434 300,434 300,444.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="933,2840" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[inputDocuments]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[inputDocuments]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
@@ -289,28 +290,28 @@
                                   <uiad1:KeywordBasedClassifier ClassifierResult="{x:Null}" DocumentTypes="{x:Null}" LearningData="{x:Null}" DisplayName="Keyword Based Classifier" sap:VirtualizedContainerService.HintSize="364,59" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_2" LearningFilePath="DocumentProcessing\keywordClassifier\learning.json" PersistenceId="UIcf20d9e83a7f46e3b0772cf0edd45d96">
                                     <uiad1:KeywordBasedClassifier.DocumentObjectModel>
                                       <InArgument x:TypeArguments="udcd:Document">
-                                        <DelegateArgumentValue x:TypeArguments="udcd:Document">
+                                        <DelegateArgumentValue x:TypeArguments="udcd:Document" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_11">
                                           <DelegateInArgument x:TypeArguments="udcd:Document" Name="DocumentObjectModel" />
                                         </DelegateArgumentValue>
                                       </InArgument>
                                     </uiad1:KeywordBasedClassifier.DocumentObjectModel>
                                     <uiad1:KeywordBasedClassifier.DocumentPath>
                                       <InArgument x:TypeArguments="x:String">
-                                        <DelegateArgumentValue x:TypeArguments="x:String">
+                                        <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_12">
                                           <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
                                         </DelegateArgumentValue>
                                       </InArgument>
                                     </uiad1:KeywordBasedClassifier.DocumentPath>
                                     <uiad1:KeywordBasedClassifier.DocumentText>
                                       <InArgument x:TypeArguments="x:String">
-                                        <DelegateArgumentValue x:TypeArguments="x:String">
+                                        <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_10">
                                           <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
                                         </DelegateArgumentValue>
                                       </InArgument>
                                     </uiad1:KeywordBasedClassifier.DocumentText>
                                     <uiad1:KeywordBasedClassifier.HumanValidatedData>
                                       <InArgument x:TypeArguments="udcr:ExtractionResult[]">
-                                        <DelegateArgumentValue x:TypeArguments="udcr:ExtractionResult[]">
+                                        <DelegateArgumentValue x:TypeArguments="udcr:ExtractionResult[]" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_13">
                                           <DelegateInArgument x:TypeArguments="udcr:ExtractionResult[]" Name="HumanValidatedData" />
                                         </DelegateArgumentValue>
                                       </InArgument>
@@ -319,28 +320,28 @@
                                   <uiat1:KeywordBasedClassifierTrainer LearningData="{x:Null}" DisplayName="Keyword Based Classifier Trainer" sap:VirtualizedContainerService.HintSize="364,59" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifierTrainer_1" LearningFilePath="DocumentProcessing\keywordClassifier\learning.json" PersistenceId="UI5bd950c398c242ea9c3c62a5cb913b11">
                                     <uiat1:KeywordBasedClassifierTrainer.DocumentObjectModel>
                                       <InArgument x:TypeArguments="udcd:Document">
-                                        <DelegateArgumentValue x:TypeArguments="udcd:Document">
+                                        <DelegateArgumentValue x:TypeArguments="udcd:Document" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_15">
                                           <DelegateInArgument x:TypeArguments="udcd:Document" Name="DocumentObjectModel" />
                                         </DelegateArgumentValue>
                                       </InArgument>
                                     </uiat1:KeywordBasedClassifierTrainer.DocumentObjectModel>
                                     <uiat1:KeywordBasedClassifierTrainer.DocumentPath>
                                       <InArgument x:TypeArguments="x:String">
-                                        <DelegateArgumentValue x:TypeArguments="x:String">
+                                        <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_16">
                                           <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
                                         </DelegateArgumentValue>
                                       </InArgument>
                                     </uiat1:KeywordBasedClassifierTrainer.DocumentPath>
                                     <uiat1:KeywordBasedClassifierTrainer.DocumentText>
                                       <InArgument x:TypeArguments="x:String">
-                                        <DelegateArgumentValue x:TypeArguments="x:String">
+                                        <DelegateArgumentValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_14">
                                           <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
                                         </DelegateArgumentValue>
                                       </InArgument>
                                     </uiat1:KeywordBasedClassifierTrainer.DocumentText>
                                     <uiat1:KeywordBasedClassifierTrainer.HumanValidatedData>
                                       <InArgument x:TypeArguments="udcr:ExtractionResult[]">
-                                        <DelegateArgumentValue x:TypeArguments="udcr:ExtractionResult[]">
+                                        <DelegateArgumentValue x:TypeArguments="udcr:ExtractionResult[]" sap2010:WorkflowViewState.IdRef="DelegateArgumentValue`1_17">
                                           <DelegateInArgument x:TypeArguments="udcr:ExtractionResult[]" Name="HumanValidatedData" />
                                         </DelegateArgumentValue>
                                       </InArgument>
@@ -456,10 +457,30 @@
               </ActivityAction>
             </ui:ForEach.Body>
           </ui:ForEach>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">200,444.5</av:Point>
+                  <av:Size x:Key="ShapeSize">200,51</av:Size>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Reconciliation" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Reconciliation.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </FlowStep>
+          </FlowStep.Next>
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID2">
+    <FlowStep x:Name="__ReferenceID3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">169,140</av:Point>
@@ -480,5 +501,6 @@
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
   </Flowchart>
 </Activity>
