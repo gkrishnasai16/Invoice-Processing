@@ -3,6 +3,7 @@
   "description": "IntelligentOCR 3.0.0 Demo",
   "main": "Main.xaml",
   "dependencies": {
+    "BalaReva.DataTable.Activities": "[1.1.0]",
     "UiPath.Excel.Activities": "[2.7.0-alpha.519938]",
     "UiPath.IntelligentOCR.Activities": "[3.1.0-beta.518147]",
     "UiPath.MachineLearningExtractor": "[1.0.0-beta.475509]",
