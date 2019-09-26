@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>324,365</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>496,784</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -31,6 +31,7 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>Newtonsoft.Json.Converters</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -53,9 +54,11 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Invoice Data Extractor" sap:VirtualizedContainerService.HintSize="304,305" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Invoice Data Extractor" sap:VirtualizedContainerService.HintSize="476,724" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="variable1" />
       <Variable x:TypeArguments="x:String" Name="path" />
@@ -63,13 +66,14 @@
       <Variable x:TypeArguments="udct:DocumentTaxonomy" Name="taxo" />
       <Variable x:TypeArguments="s:String[]" Name="mySet" />
       <Variable x:TypeArguments="udcr:ClassificationResult[]" Name="classificationResults" />
+      <Variable x:TypeArguments="sd1:DataTable" Default="[New System.Data.DataTable]" Name="Results" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign DisplayName="Get Documents" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign DisplayName="Get Documents" sap:VirtualizedContainerService.HintSize="434,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[inputDocuments]</OutArgument>
       </Assign.To>
@@ -82,20 +86,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <uiat:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="262,22" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxo]">
+    <uiat:LoadTaxonomy DisplayName="Load Taxonomy" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxo]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uiat:LoadTaxonomy>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="933,2840" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[inputDocuments]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="933,2456" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[inputDocuments]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="item" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="897,2706" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="897,2322" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <Sequence.Variables>
               <Variable x:TypeArguments="udcd:Document" Name="dom" />
               <Variable x:TypeArguments="x:String" Name="text" />
@@ -169,7 +173,7 @@
             </uiad1:ClassifyDocumentScope>
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="855,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[Newtonsoft.Json.JsonConvert.SerializeObject(classificationResults)]" />
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="855,61" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Classified &quot;  + item]" />
-            <If Condition="[classificationResults.Any()]" sap:VirtualizedContainerService.HintSize="855,1729" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[classificationResults.Any()]" sap:VirtualizedContainerService.HintSize="855,1345" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,16 +181,16 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="476,1581" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                <Sequence sap:VirtualizedContainerService.HintSize="476,1197" sap2010:WorkflowViewState.IdRef="Sequence_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[item + &quot; is a &quot; + classificationResults.First().DocumentTypeId]" />
-                  <uiad2:DataExtractionScope DocumentTypeId="{x:Null}" ClassificationResult="[classificationResults(0)]" DisplayName="Data Extraction Scope" DocumentObjectModel="[dom]" DocumentPath="[item]" DocumentText="[text]" ExtractionResult="[automaticResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="434,230" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxo]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIaa8d04e1c14a4626b874bc731827b1e5&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Flexi.Invoice&quot;:{&quot;FieldMappings&quot;:{&quot;Flexi.Invoice.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;invoice-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.Company&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.Company&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.TotalAmount&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.TotalAmount&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;total\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.InvoiceInvoiceTable&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.InvoiceInvoiceTable&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;items\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.Designation&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.Designation&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;description\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.Quantity&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.Quantity&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;quantity\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.UnitPrice&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.UnitPrice&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;unit-price\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;line-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.InvoiceTable.LineNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceTable.LineNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;line-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.InvoiceTable.ItemPONumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceTable.ItemPONumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;item-po-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.VendorAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.VendorAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;vendor-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.BillingName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.BillingName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.BillingAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.BillingAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.ShippingAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.ShippingAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;shipping-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.PaymentTerms&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.PaymentTerms&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;payment-terms\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.DueDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.DueDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;due-date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.PurchaseOrderNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.PurchaseOrderNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;po-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.NetAmount&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.NetAmount&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;net-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.Tax&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.Tax&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;tax\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.currency&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.currency&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;currency\&quot;&quot;,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIaa8d04e1c14a4626b874bc731827b1e5&quot;:&quot;0&quot;}}">
+                  <uiad2:DataExtractionScope DocumentTypeId="{x:Null}" ClassificationResult="[classificationResults(0)]" DisplayName="Data Extraction Scope" DocumentObjectModel="[dom]" DocumentPath="[item]" DocumentText="[text]" ExtractionResult="[automaticResults]" FormatValuesIfPossible="True" sap:VirtualizedContainerService.HintSize="434,203" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxo]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UIaa8d04e1c14a4626b874bc731827b1e5&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;Flexi.Invoice&quot;:{&quot;FieldMappings&quot;:{&quot;Flexi.Invoice.InvoiceNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;invoice-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.InvoiceDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.Company&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.Company&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.TotalAmount&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.TotalAmount&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;total\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.InvoiceInvoiceTable&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.InvoiceInvoiceTable&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;items\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.Designation&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.Designation&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;description\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.Quantity&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.Quantity&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;quantity\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.UnitPrice&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.UnitPrice&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;unit-price\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;InvoiceInvoiceTable.Total&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;InvoiceInvoiceTable.Total&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;line-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.InvoiceTable.LineNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceTable.LineNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;line-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.InvoiceTable.ItemPONumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.InvoiceTable.ItemPONumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;item-po-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.VendorAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.VendorAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;vendor-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.BillingName&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.BillingName&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-name\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.BillingAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.BillingAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;billing-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.ShippingAddress&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.ShippingAddress&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;shipping-addr\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.PaymentTerms&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.PaymentTerms&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;payment-terms\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.DueDate&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.DueDate&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;due-date\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.PurchaseOrderNumber&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.PurchaseOrderNumber&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;po-no\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.NetAmount&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.NetAmount&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;net-amount\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.Tax&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.Tax&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;tax\&quot;&quot;,&quot;ShouldExtract&quot;:true},&quot;Flexi.Invoice.currency&quot;:{&quot;OriginalTaxonomyFieldId&quot;:&quot;Flexi.Invoice.currency&quot;,&quot;ExtractorTaxonomyFieldId&quot;:&quot;\&quot;currency\&quot;&quot;,&quot;ShouldExtract&quot;:true}},&quot;ExtractorDocumentTypeId&quot;:null}}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UIaa8d04e1c14a4626b874bc731827b1e5&quot;:&quot;0&quot;}}">
                     <uiad2:DataExtractionScope.Extractors>
-                      <umad:MachineLearningExtractor sap2010:Annotation.AnnotationText="" ApiKey="4xgosIphmlvU185ayzHBYzFuAKCpxA6rgOpY//8k/VoFg2xpzzct9GqxntpvZrfE" DisplayName="ML Extractor - Invoice" Endpoint="https://invoices.uipath.com" sap:VirtualizedContainerService.HintSize="200,49" sap2010:WorkflowViewState.IdRef="MachineLearningExtractor_1" PersistenceId="UIaa8d04e1c14a4626b874bc731827b1e5" RetryOnFailure="True">
+                      <umad:MachineLearningExtractor ApiKey="kHNLNRIiS1LyQQFot9SeDMySBbDIpLpqSZhHaTJGpxYXU0iK3LnkPK2UnP3MghTC" DisplayName="ML Extractor - Invoice" Endpoint="https://invoices.uipath.com" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MachineLearningExtractor_1" PersistenceId="UIaa8d04e1c14a4626b874bc731827b1e5" RetryOnFailure="True">
                         <umad:MachineLearningExtractor.DocumentBounds>
                           <InArgument x:TypeArguments="udcr:ResultsDocumentBounds">
                             <DelegateArgumentValue x:TypeArguments="udcr:ResultsDocumentBounds">
@@ -229,11 +233,6 @@
                             </DelegateArgumentReference>
                           </OutArgument>
                         </umad:MachineLearningExtractor.ExtractorResult>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
                       </umad:MachineLearningExtractor>
                     </uiad2:DataExtractionScope.Extractors>
                   </uiad2:DataExtractionScope>
@@ -358,75 +357,8 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:CommentOut>
                   <uiad2:ExportExtractionResults DataSet="[resultsDs]" DisplayName="Export Extraction Results" ExtractionResult="[automaticResults]" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="ExportExtractionResults_2" />
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="[&quot;storing information in &quot; + &quot;output/&quot; + System.IO.Path.GetFileNameWithoutExtension( item ) + &quot;.xlsx&quot;]" />
-                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,379" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="documents\Excel Sheets\Supporting.xlsx">
-                    <ui:ExcelApplicationScope.Body>
-                      <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                        </ActivityAction.Argument>
-                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,270" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelAppendRange DataTable="[resultsDs.Tables(&quot;Simple Fields&quot;)]" DisplayName="Append Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelAppendRange_1" SheetName="Invoice Report" />
-                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                            <ui:CommentOut.Body>
-                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="641,643" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:ForEach x:TypeArguments="sd1:DataTable" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="599,551" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[resultsDs.Tables]">
-                                  <ui:ForEach.Body>
-                                    <ActivityAction x:TypeArguments="sd1:DataTable">
-                                      <ActivityAction.Argument>
-                                        <DelegateInArgument x:TypeArguments="sd1:DataTable" Name="dt" />
-                                      </ActivityAction.Argument>
-                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="563,418" sap2010:WorkflowViewState.IdRef="Sequence_6">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <If Condition="[dt.TableName=&quot;Simple Fields&quot;]" sap:VirtualizedContainerService.HintSize="521,326" sap2010:WorkflowViewState.IdRef="If_1">
-                                          <If.Then>
-                                            <Sequence sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <ui:ExcelWriteRange AddHeaders="True" DataTable="[dt]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Invoice Report" StartingCell="A1" />
-                                            </Sequence>
-                                          </If.Then>
-                                        </If>
-                                      </Sequence>
-                                    </ActivityAction>
-                                  </ui:ForEach.Body>
-                                </ui:ForEach>
-                              </Sequence>
-                            </ui:CommentOut.Body>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:CommentOut>
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:ExcelApplicationScope.Body>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:ExcelApplicationScope>
+                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="WriteLine_8" Text="storing information in Datatable" />
+                  <ui:MergeDataTable Destination="[Results]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[resultsDs.Tables(&quot;Simple Fields&quot;)]" />
                 </Sequence>
               </If.Then>
               <If.Else>
@@ -443,5 +375,74 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,379" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="documents\Excel Sheets\Supporting.xlsx">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,270" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[Results]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Invoice Report" StartingCell="A1" />
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="641,643" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ForEach x:TypeArguments="sd1:DataTable" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="599,551" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[resultsDs.Tables]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="sd1:DataTable">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd1:DataTable" Name="dt" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="563,418" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[dt.TableName=&quot;Simple Fields&quot;]" sap:VirtualizedContainerService.HintSize="521,326" sap2010:WorkflowViewState.IdRef="If_3">
+                            <If.Then>
+                              <Sequence sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:ExcelWriteRange AddHeaders="True" DataTable="[dt]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Invoice Report" StartingCell="A1" />
+                              </Sequence>
+                            </If.Then>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
   </Sequence>
 </Activity>
