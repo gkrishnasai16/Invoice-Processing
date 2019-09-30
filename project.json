@@ -3,15 +3,15 @@
   "description": "IntelligentOCR 3.0.0 Demo",
   "main": "Main.xaml",
   "dependencies": {
-    "BalaReva.DataTable.Activities": "[1.1.0]",
-    "UiPath.Excel.Activities": "[2.7.0-alpha.519938]",
-    "UiPath.IntelligentOCR.Activities": "[3.1.0-beta.518147]",
+    "BalaReva.DataTable.Activities": "[2.0.1]",
+    "UiPath.Excel.Activities": "[2.7.0-alpha.532367]",
+    "UiPath.IntelligentOCR.Activities": "[3.1.0-beta.522997]",
     "UiPath.MachineLearningExtractor": "[1.0.0-beta.475509]",
     "UiPath.OmniPage.Activities": "[1.2.0-beta.522996]",
     "UiPath.OmniPage.Bundle.Extended": "[1.0.0]",
     "UiPath.PDF.Activities": "[3.0.1-beta.518862]",
-    "UiPath.System.Activities": "[19.10.0-alpha.519938]",
-    "UiPath.UIAutomation.Activities": "[19.10.0-alpha.515332]"
+    "UiPath.System.Activities": "[19.10.0-alpha.527048]",
+    "UiPath.UIAutomation.Activities": "[19.10.0-alpha.531735]"
   },
   "webServices": [],
   "schemaVersion": "4.0",
